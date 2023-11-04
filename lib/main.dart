@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
 }
 
 
-class _MyHomePageState extends StatelessWidget {
-
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class _MyHomePageState extends StatelessWidget {
               'select timer',
             ),
             Text(
-              '0',
+              '1',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
