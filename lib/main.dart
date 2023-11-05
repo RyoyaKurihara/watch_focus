@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:untitled/long_focus_timer.dart';
 import 'package:untitled/short_focus_timer.dart';
@@ -47,13 +45,13 @@ class MyHomePage extends StatelessWidget {
                   children: <Widget>[
                     ElevatedButton(
                         onPressed: (){
-                          Navigator.of(context).push( MaterialPageRoute(builder: (context) => const ShortFocusTimer()));
+                          Navigator.of(context).push( MaterialPageRoute(builder: (context) => ShortFocusTimer()));
                         },
                         child: const Text('10 / 0')
                     ),
                     ElevatedButton(
                         onPressed: (){
-                          Navigator.of(context).push( MaterialPageRoute(builder: (context) => const LongFocusTimer()));
+                          Navigator.of(context).push( MaterialPageRoute(builder: (context) => LongFocusTimer()));
                         },
                         child: const Text('25 / 5')
                     )
