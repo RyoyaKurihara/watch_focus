@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/long_focus_timer.dart';
+import 'package:untitled/short_focus_timer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
@@ -27,20 +29,39 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'select timer',
-            ),
-            Text(
-              '1',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      body: Container(
+        color: Colors.black,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'select timer',
+                style: TextStyle( color: Colors.white),
+              ),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                        onPressed: (){
+                          Navigator.of(context).push( MaterialPageRoute(builder: (context) => ShortFocusTimer()));
+                        },
+                        child: const Text('10 / 0')
+                    ),
+                    ElevatedButton(
+                        onPressed: (){
+                          Navigator.of(context).push( MaterialPageRoute(builder: (context) => LongFocusTimer()));
+                        },
+                        child: const Text('25 / 5')
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }
