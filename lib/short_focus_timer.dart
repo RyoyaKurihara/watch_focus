@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-class ShortFocusTimer extends StatefulWidget{
+class ShortFocusTimer extends StatefulWidget {
   const ShortFocusTimer({super.key});
 
   @override
@@ -8,21 +9,19 @@ class ShortFocusTimer extends StatefulWidget{
 }
 
 class ShortFocusTimerState extends State<ShortFocusTimer> {
-
-  int shortFocusTime = 10 * 60;
+  int shortFocusTime = 10;
   int shortBreakTime = 0;
-  int shortFocusTimeCount = 10 * 60;
-  int shortBreakTimeCount = 0;
+
+  int get shortFocusTimeCount => shortFocusTime;
+
+  int get shortBreakTimeCount => shortBreakTime;
 
   int shortTimerSwitch = 0;
-  int counter = 0;
 
-  void timerSwitch(){
-    setState(() {
-      counter--;
-    });
+  void focusTimerStart(){
+    shortTimerSwitch++;
+    shortTimerSwitch = shortTimerSwitch % 4;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,8 @@ class ShortFocusTimerState extends State<ShortFocusTimer> {
     return Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-            child: Expanded(
-          child: Container(
+          child: Expanded(
+            child: Container(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -41,17 +40,17 @@ class ShortFocusTimerState extends State<ShortFocusTimer> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('${shortFocusTime - counter}',
+                    Text('$shortFocusTime',
                         style: const TextStyle(color: Colors.white)),
                     const Text('/', style: TextStyle(color: Colors.white)),
                     Text('$shortBreakTime',
                         style: const TextStyle(color: Colors.white))
                   ],
                 ),
-              ElevatedButton(
-                onPressed: timerSwitch,
-                child: const Icon( Icons.play_arrow ),
-              )
+                ElevatedButton(
+                  onPressed: focusTimerStart,
+                  child: const Icon(Icons.play_arrow),
+                )
               ])),
         )));
   }
